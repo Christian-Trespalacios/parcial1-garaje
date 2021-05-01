@@ -1,4 +1,6 @@
-public class Carro extends Vehiculo{
+package Vehiculos;
+
+public class Carro extends Vehiculo {
 
     private int numeroDePuertas;
 

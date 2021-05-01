@@ -1,3 +1,5 @@
+package Vehiculos;
+
 public class Enum {
 
     public final static String NEGRO="NEGRO";

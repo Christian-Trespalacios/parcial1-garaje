@@ -1,3 +1,5 @@
+package Vehiculos;
+
 public class Avion extends Vehiculo {
 
     private int altitudMaxima;
@@ -6,4 +8,5 @@ public class Avion extends Vehiculo {
         super(color, referencia, velocidadMaxima);
         this.altitudMaxima = altitudM;
     }
+
 }

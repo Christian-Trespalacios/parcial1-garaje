@@ -1,3 +1,7 @@
+package Vehiculos;
+
+import Vehiculos.Vehiculo;
+
 public class Yate extends Vehiculo {
 
     private int pesoMaximo;
