@@ -1,7 +1,12 @@
 package Vehiculos;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Vehiculo {
 
@@ -21,6 +26,48 @@ public class Vehiculo {
         this.velocidadMaxima = velocidadMaxima;
 
     }
+    public List<Vehiculo>ordenarVehiculosPorVelocidadMax(){
+
+        List<Vehiculo> NuevoArray=vehiculos.stream().sorted(Comparator.comparing(Vehiculo::getVelocidadMaxima)).collect(Collectors.toList());
+
+        return NuevoArray;
+
+    }
+
+    public List<Vehiculo>ListarVehiculosNegroAzul(){
+
+        List<Vehiculo> NuevoArray=vehiculos.stream()
+                .filter(Vehiculo -> Vehiculo.getColor().equals("NEGRO") || Vehiculo.getColor().equals("AZUL")).map(Vehiculo -> new Vehiculo(Vehiculo.getReferencia(),Vehiculo.getColor(),Vehiculo.getVelocidadMaxima())).collect(Collectors.toList());
+
+        return NuevoArray;
+    }
+
+    public String ConcatRefVehiculosBlancoVerde(){
+
+        String RefConcat="";
+
+        List<Vehiculo> NuevoArray=vehiculos.stream()
+                .filter(Vehiculo -> Vehiculo.getColor().equals("BLANCO") || Vehiculo.getColor().equals("VERDE")).map(Vehiculo -> new Vehiculo(Vehiculo.getReferencia(),Vehiculo.getColor(),Vehiculo.getVelocidadMaxima())).collect(Collectors.toList());
+
+        for (int i=0;i<NuevoArray.size();i++) {
+            RefConcat=RefConcat + NuevoArray.get(i).getReferencia();
+        }
+
+        return RefConcat;
+    }
+
+    public String VelocidadMaxima(){
+        Optional<Vehiculo> VelocidadMax=vehiculos.stream().max(Comparator.comparing(Vehiculo::getVelocidadMaxima));
+        return "VEHICULO ES: " + VelocidadMax.get().getReferencia() + " VELOCIDAD MAXIMA ES:   " + VelocidadMax.get().getVelocidadMaxima();
+    }
+
+
+    public String VelocidadMinima(){
+        Optional<Vehiculo> VelocidadMin=vehiculos.stream().min(Comparator.comparing(Vehiculo::getVelocidadMaxima));
+        return "VEHICULO ES: " + VelocidadMin.get().getReferencia() + "VELOCIDAD MINIMA ES:  " + VelocidadMin.get().getVelocidadMaxima();
+    }
+
+
 
     public String getColor() {
         return color;
